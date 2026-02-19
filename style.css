@@ -219,3 +219,23 @@ body {
         opacity: 1;
     }
 }
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.btn-whatsapp img {
+  width: 22px;
+  height: 22px;
+}
+
