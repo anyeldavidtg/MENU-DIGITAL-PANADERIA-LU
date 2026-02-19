@@ -1,0 +1,485 @@
+/* ============================================
+   PANADERIA LUCHO PAN — style.css  v2
+   Móvil + WhatsApp + Oferta del Día
+   ============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:        #C8A96E;
+  --gold-light:  #E2C99A;
+  --gold-dark:   #8B6914;
+  --brown-dark:  #3B1F0A;
+  --brown-mid:   #6B3A1F;
+  --cream:       #FDF6ED;
+  --cream-dark:  #F0E0C0;
+  --white:       #FFFFFF;
+  --text-dark:   #2C1A0E;
+  --text-mid:    #5C3D1E;
+  --shadow:      0 8px 32px rgba(60,20,0,0.18);
+  --wa:          #25D366;
+  --wa-dark:     #128C7E;
+  --pink:        #F2A7B0;
+  --pink-light:  #FDE8EC;
+  --pink-dark:   #C0566A;
+  --mauve:       #8B4458;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   HOME PAGE
+───────────────────────────────────────── */
+
+body.home-page {
+  background: url('img/logo.png') center/cover no-repeat fixed;
+  background-color: var(--brown-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  position: relative;
+}
+
+.hero-overlay {
+  position: fixed; inset: 0; z-index: 0;
+  background: linear-gradient(135deg,
+    rgba(30,10,0,.72) 0%,
+    rgba(80,35,5,.55) 50%,
+    rgba(20,8,0,.78) 100%);
+}
+
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 2rem 1.2rem;
+  width: 100%; max-width: 520px;
+  animation: fadeInUp .9s ease both;
+}
+
+.brand-top {
+  font-size: 3rem; margin-bottom: .5rem;
+  animation: bounceIn 1s ease .3s both;
+}
+
+.brand-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 9vw, 5rem);
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.1;
+  text-shadow: 0 4px 24px rgba(0,0,0,.6);
+  margin-bottom: .5rem;
+}
+.brand-title span { color: var(--gold-light); display: block; }
+
+.brand-sub {
+  font-size: clamp(.78rem, 3.2vw, 1.05rem);
+  color: var(--cream-dark);
+  font-weight: 300; letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem; opacity: .85;
+}
+
+/* Botones inicio */
+.menu-buttons {
+  display: flex; flex-direction: column;
+  gap: 1.1rem; align-items: center;
+}
+
+.menu-btn {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 2.5rem;
+  width: 100%; max-width: 300px;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: clamp(.9rem, 4vw, 1.1rem);
+  letter-spacing: 3px; text-transform: uppercase;
+  position: relative; overflow: hidden;
+  clip-path: polygon(0 0, 93% 0, 100% 50%, 93% 100%, 0 100%);
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: var(--shadow);
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,.12);
+  transform: translateX(-100%);
+  transition: transform .35s ease;
+}
+.menu-btn:hover::before,
+.menu-btn:active::before { transform: translateX(0); }
+.menu-btn:hover  { transform: translateX(6px) scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+.menu-btn:active { transform: translateX(3px) scale(.98); }
+
+.btn-panaderia {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 60%, var(--gold-light) 100%);
+  color: var(--brown-dark);
+}
+.btn-reposteria {
+  background: linear-gradient(135deg, #8B4458 0%, #C0566A 60%, #F2A7B0 100%);
+  color: var(--white);
+}
+.btn-icon  { font-size: 1.4rem; }
+.btn-label { flex: 1; }
+.btn-arrow { font-size: .9rem; opacity: .7; }
+
+/* Partículas */
+.deco-dots { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.deco-dots span {
+  position: absolute; width: 8px; height: 8px;
+  background: var(--gold); border-radius: 50%;
+  opacity: .25; animation: floatDot 6s infinite ease-in-out;
+}
+.deco-dots span:nth-child(1) { top:15%; left:10%; animation-delay:0s; }
+.deco-dots span:nth-child(2) { top:70%; left:85%; animation-delay:1.2s; }
+.deco-dots span:nth-child(3) { top:40%; left:5%;  animation-delay:2.4s; }
+.deco-dots span:nth-child(4) { top:80%; left:20%; animation-delay:.8s; }
+.deco-dots span:nth-child(5) { top:20%; left:80%; animation-delay:3s; }
+
+/* ─────────────────────────────────────────
+   BOTONES FLOTANTES — INDEX
+───────────────────────────────────────── */
+
+/* WhatsApp — esquina inferior derecha */
+.float-whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 200;
+}
+
+.whatsapp-fab {
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: var(--wa);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37,211,102,.45);
+  animation: pulseGreen 2.5s infinite;
+  transition: transform .2s, box-shadow .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.whatsapp-fab:hover,
+.whatsapp-fab:active { transform: scale(1.12); box-shadow: 0 10px 28px rgba(37,211,102,.6); }
+.whatsapp-fab svg    { width: 32px; height: 32px; fill: white; }
+
+/*
+ ╔══════════════════════════════════════════════════════╗
+ ║  OFERTA DEL DÍA — esquina inferior izquierda        ║
+ ║                                                      ║
+ ║  ▶ Para MOSTRAR la oferta:                           ║
+ ║    El div debe ser:  <div class="float-oferta">      ║
+ ║                                                      ║
+ ║  ▶ Para OCULTAR la oferta:                           ║
+ ║    Cambia a:  <div class="float-oferta oculto">      ║
+ ║                                                      ║
+ ║  Eso es todo. Sin tocar CSS ni nada más.             ║
+ ╚══════════════════════════════════════════════════════╝
+*/
+
+.float-oferta {
+  position: fixed;
+  left: 20px;
+  bottom: 24px;
+  z-index: 200;
+}
+
+.float-oferta.oculto { display: none !important; }
+
+.oferta-fab {
+  display: flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #FF6B35, #FF9500);
+  color: white; text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .82rem; letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .7rem 1.1rem;
+  border-radius: 30px;
+  box-shadow: 0 6px 20px rgba(255,107,53,.45);
+  animation: pulseOrange 2.8s infinite, slideInLeft .6s ease both;
+  transition: transform .2s;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+.oferta-fab:hover,
+.oferta-fab:active { transform: scale(1.06); }
+.oferta-fab .oferta-icon { font-size: 1.1rem; }
+
+/* ─────────────────────────────────────────
+   PÁGINAS DE MENÚ
+───────────────────────────────────────── */
+
+body.menu-page { background-color: var(--cream); min-height: 100vh; }
+
+/* Header */
+.menu-header {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: .5rem;
+  padding: .85rem 1.5rem;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,.12);
+  backdrop-filter: blur(8px);
+}
+body.panaderia-theme .menu-header  { background: linear-gradient(90deg, var(--brown-dark), var(--brown-mid)); }
+body.reposteria-theme .menu-header { background: linear-gradient(90deg, var(--mauve), var(--pink-dark)); }
+
+.back-btn {
+  color: var(--cream); text-decoration: none;
+  font-weight: 700; font-size: .85rem; letter-spacing: 1px;
+  padding: .4rem .85rem;
+  border: 1.5px solid rgba(255,255,255,.35);
+  border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+  transition: background .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.back-btn:hover,
+.back-btn:active { background: rgba(255,255,255,.2); color: #fff; }
+
+.header-brand {
+  display: flex; align-items: center; gap: .4rem;
+  color: var(--cream);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(.75rem, 3.5vw, 1.05rem);
+  flex: 1; justify-content: center; min-width: 0;
+}
+.header-brand span { font-size: 1.2rem; flex-shrink: 0; }
+.header-brand h2   { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.header-cat-tag {
+  background: rgba(255,255,255,.18); color: var(--white);
+  font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
+  padding: .3rem .75rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.3);
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* Banner */
+.menu-banner {
+  height: clamp(140px, 28vw, 220px);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.panaderia-banner  { background: linear-gradient(135deg, var(--brown-dark), var(--gold-dark), var(--gold)); }
+.reposteria-banner { background: linear-gradient(135deg, var(--mauve), var(--pink-dark), var(--pink)); }
+
+.menu-banner::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='4' fill='%23fff' fill-opacity='.04'/%3E%3C/svg%3E");
+}
+
+.banner-text {
+  text-align: center; color: var(--white); z-index: 1;
+  animation: fadeInUp .7s ease both; padding: 0 1rem;
+}
+.banner-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 7vw, 3.5rem);
+  font-weight: 900; text-shadow: 0 3px 16px rgba(0,0,0,.4);
+  margin-bottom: .4rem;
+}
+.banner-text p {
+  font-size: clamp(.8rem, 3vw, 1rem);
+  font-weight: 300; letter-spacing: 1px; opacity: .9;
+}
+
+/* Grid section */
+.menu-grid-section {
+  max-width: 1100px; margin: 0 auto;
+  padding: 2.5rem 1rem 2rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700; text-align: center;
+  margin-bottom: 2rem; position: relative;
+}
+body.panaderia-theme .section-title  { color: var(--brown-dark); }
+body.reposteria-theme .section-title { color: var(--mauve); }
+.section-title::after {
+  content: ''; display: block;
+  width: 60px; height: 3px; border-radius: 3px;
+  margin: .5rem auto 0;
+}
+body.panaderia-theme .section-title::after  { background: var(--gold); }
+body.reposteria-theme .section-title::after { background: var(--pink-dark); }
+
+/* Products grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Product card */
+.product-card {
+  background: var(--white); border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(60,20,0,.10);
+  transition: transform .3s, box-shadow .3s;
+  animation: fadeInUp .6s ease both;
+  -webkit-tap-highlight-color: transparent;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(60,20,0,.18); }
+.product-card:nth-child(1) { animation-delay:.05s; }
+.product-card:nth-child(2) { animation-delay:.12s; }
+.product-card:nth-child(3) { animation-delay:.19s; }
+.product-card:nth-child(4) { animation-delay:.26s; }
+.product-card:nth-child(5) { animation-delay:.33s; }
+.product-card:nth-child(6) { animation-delay:.40s; }
+
+.product-img-wrap { width: 100%; height: 180px; position: relative; overflow: hidden; }
+.product-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s ease;
+}
+.product-card:hover .product-img-wrap img { transform: scale(1.06); }
+
+.img-placeholder {
+  display: none; width: 100%; height: 100%;
+  font-size: 3.5rem; align-items: center; justify-content: center;
+}
+body.panaderia-theme .img-placeholder  { background: linear-gradient(135deg, var(--cream-dark), var(--gold-light)); }
+body.reposteria-theme .img-placeholder { background: linear-gradient(135deg, var(--pink-light), var(--pink)); }
+
+.product-info { padding: 1.1rem 1.3rem 1.4rem; }
+
+.product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 700; margin-bottom: .3rem;
+}
+body.panaderia-theme .product-name  { color: var(--brown-dark); }
+body.reposteria-theme .product-name { color: var(--mauve); }
+
+.product-price {
+  font-size: clamp(1.05rem, 3.5vw, 1.3rem);
+  font-weight: 700; margin-bottom: .6rem;
+  display: inline-block; padding: .2rem .8rem; border-radius: 20px;
+}
+body.panaderia-theme .product-price  { background: var(--gold-light);  color: var(--brown-dark); }
+body.reposteria-theme .product-price { background: var(--pink-light); color: var(--mauve); }
+
+.product-desc {
+  font-size: clamp(.82rem, 2.5vw, .9rem);
+  color: var(--text-mid); line-height: 1.6;
+}
+
+/* ─── BOTÓN WHATSAPP EN MENÚ ─── */
+.whatsapp-order-section { margin: 2.5rem 0 0; text-align: center; }
+
+.whatsapp-order-btn {
+  display: inline-flex; align-items: center; gap: .75rem;
+  background: linear-gradient(135deg, var(--wa-dark), var(--wa));
+  color: white; text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: clamp(.88rem, 3.5vw, 1.05rem);
+  letter-spacing: .5px;
+  padding: 1rem 2rem; border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(37,211,102,.4);
+  transition: transform .2s, box-shadow .2s;
+  animation: pulseGreen 2.5s infinite;
+  -webkit-tap-highlight-color: transparent;
+  max-width: 100%;
+}
+.whatsapp-order-btn:hover,
+.whatsapp-order-btn:active { transform: scale(1.04); box-shadow: 0 10px 30px rgba(37,211,102,.55); }
+.whatsapp-order-btn svg    { width: 26px; height: 26px; fill: white; flex-shrink: 0; }
+
+/* Mensaje final */
+.menu-footer-msg {
+  text-align: center; margin-top: 1.5rem;
+  padding: 1.4rem 1rem; border-radius: 12px;
+  font-size: clamp(.9rem, 3vw, 1.1rem);
+  font-weight: 700; letter-spacing: .5px;
+}
+body.panaderia-theme .menu-footer-msg  { background: linear-gradient(90deg, var(--cream-dark), var(--gold-light), var(--cream-dark)); color: var(--brown-dark); }
+body.reposteria-theme .menu-footer-msg { background: linear-gradient(90deg, var(--pink-light), var(--pink), var(--pink-light));        color: var(--mauve); }
+
+/* Footer */
+.site-footer { text-align: center; padding: 1.4rem; font-size: .82rem; margin-top: 1rem; }
+body.panaderia-theme .site-footer  { background: var(--brown-dark); color: var(--cream-dark); }
+body.reposteria-theme .site-footer { background: var(--mauve);      color: var(--pink-light); }
+
+/* ─────────────────────────────────────────
+   ANIMACIONES
+───────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounceIn {
+  0%   { transform: scale(.3); opacity: 0; }
+  60%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes floatDot {
+  0%,100% { transform: translateY(0) scale(1);    opacity: .25; }
+  50%      { transform: translateY(-20px) scale(1.4); opacity: .5; }
+}
+@keyframes pulseGreen {
+  0%   { box-shadow: 0 0 0 0   rgba(37,211,102,.55); }
+  70%  { box-shadow: 0 0 0 14px rgba(37,211,102,0);  }
+  100% { box-shadow: 0 0 0 0   rgba(37,211,102,0);   }
+}
+@keyframes pulseOrange {
+  0%   { box-shadow: 0 0 0 0   rgba(255,107,53,.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(255,107,53,0);  }
+  100% { box-shadow: 0 0 0 0   rgba(255,107,53,0);   }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE MÓVIL
+───────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .product-img-wrap { height: 145px; }
+  .header-cat-tag   { display: none; }
+  .whatsapp-order-btn { padding: .85rem 1.5rem; }
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .menu-header  { padding: .7rem .9rem; }
+  .back-btn     { font-size: .76rem; padding: .32rem .65rem; }
+  .header-brand h2 { font-size: .8rem; }
+
+  .product-img-wrap { height: 190px; }
+  .product-info     { padding: .95rem; }
+
+  .menu-btn { max-width: 260px; padding: .9rem 1.8rem; letter-spacing: 2px; }
+
+  .whatsapp-fab      { width: 52px; height: 52px; }
+  .whatsapp-fab svg  { width: 28px; height: 28px; }
+  .oferta-fab        { font-size: .75rem; padding: .58rem .85rem; }
+
+  .menu-footer-msg { padding: 1rem; }
+
+  /* Safe area iPhones con notch */
+  .float-whatsapp { bottom: calc(18px + env(safe-area-inset-bottom)); right: 16px; }
+  .float-oferta   { bottom: calc(18px + env(safe-area-inset-bottom)); left: 16px; }
+}
