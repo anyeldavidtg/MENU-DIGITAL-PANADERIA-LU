@@ -182,29 +182,6 @@ body {
     margin-bottom: 10px;
 }
 
-.oferta {
-    position: absolute;
-    bottom: 40px;
-    left: 20px;
-    background: #f4c36a;
-    color: #000;
-    padding: 20px 25px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1rem;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-
-.oferta::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 30px;
-    border-width: 15px 15px 0;
-    border-style: solid;
-    border-color: #f4c36a transparent transparent;
-}
-
 .opciones {
     animation: slide 1.5s ease-out;
 }
@@ -288,4 +265,5 @@ body {
   font-weight: bold;
   color: #25D366;
 }
+
 
